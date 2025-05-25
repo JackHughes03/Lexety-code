@@ -29,8 +29,12 @@ jobs:
 
       - name: Deploy
         run: |
+          cd dist
+          git init
+          git add .
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add dist -f
           git commit -m "Deploy to gh-pages"
-          git subtree push --prefix dist origin gh-pages 
+          git branch -M gh-pages
+          git remote add origin https://github.com/JackHughes03/Lexety.git
+          git push -f origin gh-pages 
