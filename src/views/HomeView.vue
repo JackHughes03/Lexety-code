@@ -5,6 +5,8 @@ import NavBar from '@/components/NavBar.vue';
 import Hero from '@/components/Hero.vue'
 import InfoBlocks from '@/components/InfoBlocks.vue'
 import Testimonials from '@/components/Testimonials.vue';
+import Footer from '@/components/Footer.vue';
+import Blog from '@/components/Blog.vue';
 </script>
 
 <template>
@@ -47,4 +49,8 @@ import Testimonials from '@/components/Testimonials.vue';
         Testing for dyslexia takes about three hours, and within two to three weeks, you will receive a 25-30-page follow-up report via email. This report includes individualised recommendations to support school, college, or university learning." />
 
         <Testimonials />
+
+        <Blog />
+
+        <Footer />
 </template>

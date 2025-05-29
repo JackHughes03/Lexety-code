@@ -41,104 +41,60 @@ const testimonials = [
 </script>
 
 <template>
-    <section class="py-12 md:py-16 bg-gray-50 px-10">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">What My Clients Say</h2>
+    <section class="py-12 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">What My Clients Say</h2>
             
-            <Swiper
-                :modules="[Pagination, Navigation, Autoplay]"
-                :slides-per-view="1"
-                :space-between="30"
-                :loop="true"
-                :autoplay="{
-                    delay: 7000,
-                    disableOnInteraction: false
-                }"
-                :pagination="{
-                    clickable: true
-                }"
-                :navigation="true"
-                :breakpoints="{
-                    640: {
-                        slidesPerView: 1
-                    },
-                    1024: {
-                        slidesPerView: 2
-                    }
-                }"
-                class="testimonials-swiper"
-            >
-                <SwiperSlide v-for="(testimonial, index) in testimonials" :key="index">
-                    <div class="bg-gray-100 rounded-xl shadow-lg p-6 md:p-8 h-full">
-                        <div class="flex flex-col h-full">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-4">
-                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                                </svg>
+            <div class="relative">
+                <Swiper
+                    :modules="[Pagination, Navigation, Autoplay]"
+                    :slides-per-view="1"
+                    :space-between="30"
+                    :loop="true"
+                    :autoplay="{
+                        delay: 7000,
+                        disableOnInteraction: false
+                    }"
+                    :pagination="{
+                        clickable: true
+                    }"
+                    :navigation="true"
+                    :breakpoints="{
+                        640: {
+                            slidesPerView: 1,
+                            spaceBetween: 20
+                        },
+                        1024: {
+                            slidesPerView: 2,
+                            spaceBetween: 30
+                        }
+                    }"
+                    class="pb-12 px-12 md:pb-16 [&_.swiper-button-next]:text-gray-800 [&_.swiper-button-next]:bg-[#C0DAD6] [&_.swiper-button-next]:w-9 [&_.swiper-button-next]:h-9 [&_.swiper-button-next]:rounded-full [&_.swiper-button-next]:shadow-md [&_.swiper-button-next]:border-[1px] [&_.swiper-button-next]:top-6 [&_.swiper-button-next]:-translate-y-0 [&_.swiper-button-next]:transition-all [&_.swiper-button-next]:duration-300 [&_.swiper-button-next]:right-0 [&_.swiper-button-next:hover]:bg-[#a8c4bf] [&_.swiper-button-next:hover]:scale-105 [&_.swiper-button-prev]:text-gray-800 [&_.swiper-button-prev]:bg-[#C0DAD6] [&_.swiper-button-prev]:w-9 [&_.swiper-button-prev]:border-[1px] [&_.swiper-button-prev]:h-9 [&_.swiper-button-prev]:rounded-full [&_.swiper-button-prev]:shadow-md [&_.swiper-button-prev]:top-6 [&_.swiper-button-prev]:-translate-y-0 [&_.swiper-button-prev]:transition-all [&_.swiper-button-prev]:duration-300 [&_.swiper-button-prev]:left-0 [&_.swiper-button-prev:hover]:bg-[#a8c4bf] [&_.swiper-button-prev:hover]:scale-105 [&_.swiper-button-next:after]:text-base [&_.swiper-button-prev:after]:text-base [&_.swiper-pagination]:bottom-0 [&_.swiper-pagination]:absolute [&_.swiper-pagination]:w-full [&_.swiper-pagination]:flex [&_.swiper-pagination]:justify-center [&_.swiper-pagination]:gap-2 [&_.swiper-pagination-bullet]:w-2.5 [&_.swiper-pagination-bullet]:h-2.5 [&_.swiper-pagination-bullet]:bg-[#C0DAD6] [&_.swiper-pagination-bullet]:opacity-50 [&_.swiper-pagination-bullet]:transition-all [&_.swiper-pagination-bullet]:duration-300 [&_.swiper-pagination-bullet-active]:bg-[#C0DAD6] [&_.swiper-pagination-bullet-active]:opacity-100 [&_.swiper-pagination-bullet-active]:scale-110 [&_.swiper-slide]:h-auto sm:[&_.swiper-pagination-bullet]:w-2 sm:[&_.swiper-pagination-bullet]:h-2"
+                >
+                    <SwiperSlide v-for="(testimonial, index) in testimonials" :key="index">
+                        <div class="bg-white mt-10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 md:p-10 h-full border border-gray-100">
+                            <div class="flex flex-col h-full">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-12 h-12 bg-[#C0DAD6] rounded-full flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="h-[1px] flex-grow bg-gradient-to-r from-[#C0DAD6] to-transparent"></div>
+                                </div>
+                                <p class="text-gray-700 text-base md:text-lg mb-6 italic flex-grow leading-relaxed">
+                                    "{{ testimonial.description }}"
+                                </p>
+                                <div class="pt-4 border-t border-gray-100">
+                                    <p class="text-gray-900 font-medium">
+                                        {{ testimonial.title }}
+                                    </p>
+                                </div>
                             </div>
-                            <p class="text-gray-700 text-base md:text-lg mb-4 italic flex-grow">
-                                "{{ testimonial.description }}"
-                            </p>
-                            <p class="text-gray-900 font-semibold">
-                                {{ testimonial.title }}
-                            </p>
                         </div>
-                    </div>
-                </SwiperSlide>
-            </Swiper>
+                    </SwiperSlide>
+                </Swiper>
+            </div>
         </div>
     </section>
 </template>
-
-<style scoped>
-.testimonials-swiper {
-    padding: 2rem 0;
-    margin: 0 -1rem;
-}
-
-:deep(.swiper-button-next),
-:deep(.swiper-button-prev) {
-    color: #C0DAD6;
-    background: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    top: 0;
-    transform: none;
-}
-
-:deep(.swiper-button-next) {
-    right: 0;
-}
-
-:deep(.swiper-button-prev) {
-    left: 0;
-}
-
-:deep(.swiper-button-next:after),
-:deep(.swiper-button-prev:after) {
-    font-size: 1.2rem;
-}
-
-:deep(.swiper-pagination-bullet-active) {
-    background: #C0DAD6;
-}
-
-:deep(.swiper-pagination-bullet) {
-    background: #C0DAD6;
-    opacity: 0.5;
-}
-
-:deep(.swiper-slide) {
-    height: auto;
-}
-
-.bg-primary {
-    background-color: #C0DAD6;
-}
-
-.text-primary {
-    color: #C0DAD6;
-}
-</style>

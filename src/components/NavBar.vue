@@ -1,16 +1,30 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const isActive = ref(false);
+const isScrolled = ref(false);
 
 const toggleHamburger = () => {
   isActive.value = !isActive.value;
 };
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50;
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
     <nav
-        class="flex flex-col md:flex-row items-center justify-center md:gap-5 gap-0 p-5 border-b-2 border-black/30 font-light bg-white">
+        class="z-50 flex flex-col md:flex-row items-center justify-center md:gap-5 gap-0 p-2 md:p-5 border-b-2 border-black/30 font-light bg-white fixed w-full top-0 transition-all duration-300"
+        :class="{ 'md:p-2 p-1': isScrolled }">
         <ul class="md:flex gap-4 bg-black/10 p-3 px-6 hidden">
             <li>
                 <router-link to="/">Home</router-link>
@@ -19,13 +33,13 @@ const toggleHamburger = () => {
                 <router-link to="/about">About</router-link>
             </li>
             <li>
-                <router-link to="/services">Dyslexia</router-link>
+                <router-link to="/dyslexia">Dyslexia</router-link>
             </li>
             <li>
-                <router-link to="/services">Resources</router-link>
+                <router-link to="/resources">Resources</router-link>
             </li>
             <li>
-                <router-link to="/services">Blog</router-link>
+                <router-link to="/blog">Blog</router-link>
             </li>
             <li>
                 <router-link to="/contact">Contact</router-link>
@@ -49,23 +63,24 @@ const toggleHamburger = () => {
             class="w-full md:hidden overflow-hidden transition-all duration-300 ease-in-out"
             :class="isActive ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'"
         >
-            <ul class="flex flex-col gap-2 bg-black/5 p-4 rounded-lg mt-4">
-                <li class="hover:bg-black/10 p-2 rounded transition-colors">
+            <ul class="flex flex-col gap-2 p-4 rounded-lg mt-4 transition-colors duration-300"
+                :class="isScrolled ? 'bg-transparent' : 'bg-black/5'">
+                <li class="p-2 rounded transition-colors" :class="isScrolled ? 'hover:bg-transparent' : 'hover:bg-black/10'">
                     <router-link to="/">Home</router-link>
                 </li>
-                <li class="hover:bg-black/10 p-2 rounded transition-colors">
+                <li class="p-2 rounded transition-colors" :class="isScrolled ? 'hover:bg-transparent' : 'hover:bg-black/10'">
                     <router-link to="/about">About</router-link>
                 </li>
-                <li class="hover:bg-black/10 p-2 rounded transition-colors">
-                    <router-link to="/services">Dyslexia</router-link>
+                <li class="p-2 rounded transition-colors" :class="isScrolled ? 'hover:bg-transparent' : 'hover:bg-black/10'">
+                    <router-link to="/dyslexia">Dyslexia</router-link>
                 </li>
-                <li class="hover:bg-black/10 p-2 rounded transition-colors">
-                    <router-link to="/services">Resources</router-link>
+                <li class="p-2 rounded transition-colors" :class="isScrolled ? 'hover:bg-transparent' : 'hover:bg-black/10'">
+                    <router-link to="/resources">Resources</router-link>
                 </li>
-                <li class="hover:bg-black/10 p-2 rounded transition-colors">
-                    <router-link to="/services">Blog</router-link>
+                <li class="p-2 rounded transition-colors" :class="isScrolled ? 'hover:bg-transparent' : 'hover:bg-black/10'">
+                    <router-link to="/blog">Blog</router-link>
                 </li>
-                <li class="hover:bg-black/10 p-2 rounded transition-colors">
+                <li class="p-2 rounded transition-colors" :class="isScrolled ? 'hover:bg-transparent' : 'hover:bg-black/10'">
                     <router-link to="/contact">Contact</router-link>
                 </li>
                 <li class="mt-2">
